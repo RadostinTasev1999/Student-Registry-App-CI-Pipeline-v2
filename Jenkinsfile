@@ -7,16 +7,23 @@ pipeline{
                bat 'npm install'
            }       
        }
-       stage("Run npm security"){
-            steps{
-                bat 'npm audit'
+       stage("Testing"){
+            failFast true
+            parallel {
+                stage("Run npm security"){
+                    steps {
+                        bat 'npm audit'
+                    }
+                }
+                stage("Run UI tests"){
+                    steps {
+                        bat 'npm test'
+                    }
+                }
             }
        }
-       stage("Run UI tests"){
-            steps{
-                bat 'npm test'
-            }
-       }
+
+       
     }
    
 }
