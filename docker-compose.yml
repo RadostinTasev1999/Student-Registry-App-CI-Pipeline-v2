@@ -3,6 +3,6 @@ services:
   app:
     image: tasev1904/student-registry-v2:1.0.0
     ports:
-      - "3030:3030" # Map port 3030 on the host to port 3030 in the container
+      - "4200:4200" # Map port 4200 on the host to port 3030 in the container
     environment:
       - NODE_ENV=production
